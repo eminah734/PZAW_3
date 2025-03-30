@@ -19,6 +19,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async login(email, password, router = null) {
+      await this.setCsrfToken();
       const response = await fetch('http://localhost:8000/api/login', {
         method: 'POST',
         headers: {
@@ -98,13 +99,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     saveState() {
-      /*
-            We save state to local storage to keep the
-            state when the user reloads the page.
-
-            This is a simple way to persist state. For a more robust solution,
-            use pinia-persistent-state.
-             */
+     
       localStorage.setItem(
         'authState',
         JSON.stringify({
@@ -117,10 +112,7 @@ export const useAuthStore = defineStore('auth', {
 })
 
 export function getCSRFToken() {
-  /*
-    We get the CSRF token from the cookie to include in our requests.
-    This is necessary for CSRF protection in Django.
-     */
+ 
   const name = 'csrftoken'
   let cookieValue = null
   if (document.cookie && document.cookie !== '') {

@@ -41,9 +41,13 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]  # We add your frontend URL here.
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']  # We add your frontend URL here.
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]  
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']  
 
+
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False 
+SESSION_COOKIE_SAMESITE = 'Lax'
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
