@@ -1,4 +1,5 @@
 <template>
+  <title>Netlifx</title>
   <div>
     <h1>Welcome to the home page</h1>
     <div v-if="authStore.isAuthenticated">

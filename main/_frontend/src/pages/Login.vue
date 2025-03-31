@@ -23,6 +23,7 @@
         />
       </div>
       <button type="submit">Login</button>
+      <router-link to="/register">Register</router-link>
     </form>
     <p v-if="error" class="error">{{ error }}</p>
   </div>

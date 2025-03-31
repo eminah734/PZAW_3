@@ -6,33 +6,43 @@
         <label class="label" for="email">Email</label>
         <div class="control has-icons-left has-icons-right">
           <input
-            class="input is-danger"
+            class="input"
+            :class="{ 'is-danger': errors.email }"
             type="email"
             placeholder="Email input"
-            value="hello@"
             v-model="email"
             id="email"
             required
           />
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fas fa-exclamation-triangle"></i>
-          </span>
         </div>
-        <p class="help is-danger error" v-if="errors.email">
+        <p v-if="errors.email" class="help is-danger">
           {{ errors.email }}
         </p>
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input v-model="password" id="password" type="password" required />
-        <span v-if="errors.password" class="error">{{ errors.password }}</span>
+      <div class="field">
+        <label class="label" for="password">Password:</label>
+        <div class="control has-icons-left has-icons-right">
+          <input
+            class="input"
+            :class="{ 'is-danger': errors.password }"
+            type="password"
+            placeholder="Password input"
+            v-model="password"
+            id="password"
+            required
+          />
+        </div>
+        <p class="help is-danger" v-if="errors.password">
+          {{ errors.password }}
+        </p>
       </div>
-      <button type="submit" :disabled="loading">
-        {{ loading ? "Processing..." : "Register" }}
-      </button>
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" :disabled="loading" class="button is-link">
+            {{ loading ? "Processing..." : "Register" }}
+          </button>
+        </div>
+      </div>
       <p v-if="errors.general" class="error">{{ errors.general }}</p>
       <p v-if="success" class="success">{{ success }}</p>
     </form>
@@ -102,19 +112,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.error {
-  color: red;
-  display: block;
-  margin-top: 5px;
-}
-.success {
-  color: green;
-  margin-top: 10px;
-}
-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-</style>

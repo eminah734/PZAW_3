@@ -67,14 +67,13 @@ def register(request):
         
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Automatyczne logowanie po rejestracji
+            login(request, user)  
             return JsonResponse({
                 'success': True,
                 'message': 'User registered successfully',
                 'user_id': user.id
             }, status=201)
         else:
-            # Uproszczona forma błędów
             errors = {field: error[0] for field, error in form.errors.items()}
             return JsonResponse({
                 'success': False,
