@@ -1,31 +1,68 @@
 <template>
-  <div class="login">
-    <h1>Login</h1>
-    <form @submit.prevent="login">
-      <div>
-        <label for="email">Email:</label>
-        <input
-          v-model="email"
-          id="email"
-          type="text"
-          required
-          @input="resetError"
-        />
+  <div class="columns is-centered is-vcentered" style="min-height: 80vh">
+    <div class="column is-two-fifths">
+      <div class="box">
+        <h1 class="title has-text-centered mb-5">Login</h1>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left">
+            <input
+              v-model="email"
+              class="input"
+              type="email"
+              placeholder="Enter your email"
+              required
+              @input="resetError"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control has-icons-left">
+            <input
+              v-model="password"
+              class="input"
+              type="password"
+              placeholder="Enter your password"
+              required
+              @input="resetError"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+          <div class="control">
+            <button
+              type="submit"
+              class="button is-success is-medium"
+              @click="login"
+            >
+              Login
+            </button>
+          </div>
+          <div class="control">
+            <router-link
+              to="/register"
+              class="button is-link is-inverted is-medium"
+            >
+              Register
+            </router-link>
+          </div>
+        </div>
+
+        <div class="has-text-centered mt-4">
+          <p v-if="error" class="has-text-danger">{{ error }}</p>
+        </div>
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input
-          v-model="password"
-          id="password"
-          type="password"
-          required
-          @input="resetError"
-        />
-      </div>
-      <button type="submit">Login</button>
-      <router-link to="/register">Register</router-link>
-    </form>
-    <p v-if="error" class="error">{{ error }}</p>
+    </div>
   </div>
 </template>
 
@@ -59,3 +96,19 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.box {
+  padding: 2rem;
+}
+
+.button {
+  margin: 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .column.is-two-fifths {
+    width: 90%;
+  }
+}
+</style>

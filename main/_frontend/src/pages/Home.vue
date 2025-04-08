@@ -5,7 +5,7 @@
     <div v-if="authStore.isAuthenticated">
       <p>Hi there, {{ authStore.user?.username }}!</p>
       <p>You are logged in.</p>
-      <button @click="logout">Logout</button>
+      <button @click="logout" class="button is-danger">Logout</button>
     </div>
     <p v-else>
       You are not logged in. <router-link to="/login">Login</router-link> ||
